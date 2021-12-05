@@ -109,7 +109,7 @@ export const SideButton = styled.div`
 export const ButtonMain = styled.div`
     display: flex;
     height: 34px;
-    overflow-x: hidden;
+    width: 225px;
 
     .buttonPag {
         background-color: #FFF;
@@ -121,5 +121,9 @@ export const ButtonMain = styled.div`
         cursor: pointer;
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
         color: #8D8D8D
+    }
+    .buttonPag.active {
+        background-color: #6D2080;
+        color: #FFF;
     }
 `

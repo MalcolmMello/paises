@@ -6,11 +6,14 @@ export const MainContent = () => {
     const [allCountries, setAllCountries] = useState([])
     const [filter, setFilter] = useState('')
     const [search, setSearch] = useState('Africa')
-    const [widthCalc, setWidthCalc] = useState(225)
 
     //paginação
     const [itemsPerPage, setItemsPerPage] = useState(10)
     const [currentPage, setCurrentPage] = useState(0)
+
+    const [pageNumberList, setPageNumberList] = useState(5)
+    const [MaxPageNumberList, setMaxPageNumberList] = useState(5)
+    const [MinPageNumberList, setMinPageNumberList] = useState(0)
 
     const totalPages = Math.ceil(allCountries.length / itemsPerPage)
     const startIndex = currentPage*itemsPerPage;
@@ -75,11 +78,21 @@ export const MainContent = () => {
     },[filter])
 
     const handleRight = () => {
-        setWidthCalc(widthCalc-225)
+        setCurrentPage(currentPage + 1)
+
+        if(currentPage+1 > MaxPageNumberList-1) {
+            setMaxPageNumberList(MaxPageNumberList + pageNumberList)
+            setMinPageNumberList(MinPageNumberList + pageNumberList)
+        }
     }
 
     const handleLeft = () => {
-
+        setCurrentPage(currentPage - 1)
+        if(currentPage - 1 < MinPageNumberList) {
+            setMaxPageNumberList(MaxPageNumberList - pageNumberList)
+            setMinPageNumberList(MinPageNumberList - pageNumberList)
+        }
+        
     }
     return (
         <C.Container>
@@ -135,11 +148,13 @@ export const MainContent = () => {
                 <C.SideButton onClick={handleLeft}>
                     <img src="https://img.icons8.com/color/18/ffffff/long-arrow-left.png"/>
                 </C.SideButton>
-                <C.ButtonMain style={{width: widthCalc}}>
-                    {Array.from(Array(totalPages), (item, index) =>{
-                        return (
-                            <button className="buttonPag" value={index} onClick={e=>setCurrentPage(Number(e.target.value))}>{index+1}</button>
-                        )
+                <C.ButtonMain>
+                {Array.from(Array(totalPages), (item, index) =>{
+                        if(index+1 < MaxPageNumberList+1 && index+1 > MinPageNumberList) {
+                            return (
+                                <button className={currentPage == index ? "buttonPag active" : "buttonPag"} value={index} onClick={e=>setCurrentPage(Number(e.target.value))}>{index+1}</button>
+                            )
+                        }
                     })}
                 </C.ButtonMain>
                 <C.SideButton onClick={handleRight}>
