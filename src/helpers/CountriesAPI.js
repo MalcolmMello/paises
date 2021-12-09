@@ -25,5 +25,9 @@ export default {
         let {data: json} = await api.get(`/name/${name}
         `);
         return json;
+    },
+    getCountriesCode: async (code) => {
+        let {data: json} = await api.get(`/alpha?codes=${code}`);
+        return json;
     }
 }
