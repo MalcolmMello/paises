@@ -11,6 +11,15 @@ export const Container = styled.header`
     bottom: 0%;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: 600px) {
+        width: auto;
+        padding: 10px 20px;
+        img {
+            height: 35px;
+            width: 65px;
+        };
+    }
 `
 
 export const GetBack = styled.div`
@@ -21,9 +30,22 @@ export const GetBack = styled.div`
     align-items: center;
     border: 1px solid #6D2080;
     cursor: pointer;
+    padding: 0px 5px;
 
     p {
         color: #6D2080;
-        font-size: 18px
+        font-size: 18px;
+    };
+
+    @media (max-width: 600px) {
+        width: 60px;
+        border: 0;
+        img {
+            height: 28px;
+            width: 28px;
+        };
+        p {
+            font-size: 0px
+        }
     }
 `

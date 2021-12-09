@@ -17,7 +17,7 @@ export const Header = () => {
             <img src={logo} alt="" />
             <C.GetBack onClick={BackMain}>
                 <img src={back} alt="" />
-                <p>Voltar</p>
+                <p>Come Back</p>
             </C.GetBack>
         </C.Container>
     )
