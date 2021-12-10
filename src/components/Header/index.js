@@ -1,7 +1,7 @@
 import * as C from './styles'
 import logo from '../../movalogo.png'
 import back from '../../getback.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 
