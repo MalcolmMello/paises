@@ -49,6 +49,7 @@ npm start
 - Styled-components
 - Router
 - Hooks
+- API
 
 ---
 
